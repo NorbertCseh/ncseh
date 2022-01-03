@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Image src="/me.jpg" alt="Norbert Cseh in sleep" className={styles.imgaboutme} width={200} height={200} />
         <div className={styles.infocontainer}>
-          <h1 className='text-3xl font-bold'>Hi, I'm Norbert Istvan Cseh.</h1>
+          <h1 className='text-3xl font-bold'>Hi, I&apos;m Norbert Istvan Cseh.</h1>
           <h3 className='text-xl'>Software developer engineer in Test at <a href="https://www.logmein.com/">LogMeIn</a></h3>
         </div>
       </main>
