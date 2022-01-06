@@ -1,0 +1,14 @@
+.cvpage {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.leftsection {
+  flex: 2;
+}
+
+.rightsection {
+  flex: 5;
+}
