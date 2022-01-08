@@ -1,7 +1,7 @@
-import { NavbarLink } from "../../components/navbarlink"
+import NavbarLink from "../../components/navbarlink"
 import Link from "next/link"
 
-export const Navbar = () => {
+const Navbar = () => {
     return (
         <nav className="flex h-16 justify-between px-20 pt-3 sticky top-0 z-50 bg-slate-800">
             <NavbarLink id="home" text="Norbert Istvan Cseh" />
@@ -12,3 +12,5 @@ export const Navbar = () => {
         </nav>
     )
 }
+
+export default Navbar;

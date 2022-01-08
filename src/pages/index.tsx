@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { AboutSection } from "../sections/about";
-import { HomeSection } from "../sections/home";
-import { Navbar } from "../sections/navigation";
+import AboutSection from "../sections/about";
+import HomeSection from "../sections/home";
+import Navbar from "../sections/navigation";
 
 const Home: NextPage = () => {
   return (

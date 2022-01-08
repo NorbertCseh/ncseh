@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const HomeSection = () => {
+const HomeSection = () => {
     return (
         <div className="flex m-auto text-center border-2 h-screen sm:flex sm:text-left">
             {/* <div className="m-auto">
@@ -41,3 +41,5 @@ export const HomeSection = () => {
         </div>
     )
 }
+
+export default HomeSection;

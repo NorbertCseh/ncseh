@@ -5,7 +5,7 @@ type NavbarLinkProps = {
     text: string
 }
 
-export const NavbarLink = ({ id, text }: NavbarLinkProps) => {
+const NavbarLink = ({ id, text }: NavbarLinkProps) => {
 
     return (
         <Link href={"#" + id}>
@@ -15,3 +15,5 @@ export const NavbarLink = ({ id, text }: NavbarLinkProps) => {
         </Link >
     )
 }
+
+export default NavbarLink;
