@@ -16,17 +16,17 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex w-full h-screen">
-        <div className="flex h-fit m-auto">
-          <div className="mr-5">
+        <div className="flex-container h-fit m-auto text-center sm:flex sm:text-left">
+          <div className="m-5">
             <Image
               src="/me.jpg"
               alt="Norbert Cseh in sleep"
               className="rounded-full"
-              width={200}
-              height={200}
+              width={250}
+              height={250}
             />
           </div>
-          <div className="pt-5">
+          <div className="m-auto">
             <h1 className="font-mono text-3xl pb-5 font-bold">Hi, I&apos;m Norbert Istvan Cseh.</h1>
             <h3 className="font-mono text-m pb-3">
               Software developer engineer in Test at{" "}
