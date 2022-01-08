@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -25,9 +26,9 @@ const Home: NextPage = () => {
               height={200}
             />
           </div>
-          <div className="m-auto">
-            <h1 className="font-mono text-2xl pb-5 font-bold">Hi, I&apos;m Norbert Istvan Cseh.</h1>
-            <h3 className="font-mono text-s pb-3">
+          <div className="pt-5">
+            <h1 className="font-mono text-3xl pb-5 font-bold">Hi, I&apos;m Norbert Istvan Cseh.</h1>
+            <h3 className="font-mono text-m pb-3">
               Software developer engineer in Test at{" "}
               <a className="text-emerald-500"
                 href="https://www.logmein.com/"
@@ -37,8 +38,8 @@ const Home: NextPage = () => {
                 LogMeIn
               </a>
             </h3>
-            <p className="font-mono text-xs italic">Slowly figuring out web development.</p>
-            <p className="font-mono text-xs italic">
+            <p className="font-mono text-s italic">Slowly figuring out web development.</p>
+            <p className="font-mono text-s italic">
               You can find my personal GitHub profile{" "}
               <a
                 className="text-emerald-500"
@@ -46,8 +47,11 @@ const Home: NextPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Here.
+                here.
               </a>
+            </p>
+            <p className="font-mono test-s italic">
+              My cv can be found <Link href="/cv"><a className="text-emerald-500">here</a></Link>.
             </p>
           </div>
         </div>
