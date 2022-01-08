@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Image from "next/image"
-import Experience from "./components/experience"
+import Experience from "../components/experience"
 
 const CV: NextPage = () => {
   return (
