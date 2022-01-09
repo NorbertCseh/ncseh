@@ -3,16 +3,8 @@ import Link from 'next/link'
 
 const HomeSection = () => {
     return (
-        <div className="flex m-auto text-center border-2 h-screen sm:flex sm:text-left">
-            {/* <div className="m-auto">
-                <Image
-                    src="/me.jpg"
-                    alt="Norbert Cseh in sleep"
-                    className="rounded-full"
-                    width={250}
-                    height={250}
-                />
-            </div> */}
+        <div className="flex m-auto text-center h-screen sm:flex sm:text-left" id='home'>
+
             <div className="m-auto">
                 <h1 className="font-mono text-5xl pb-5 font-bold">Hi, I&apos;m Norbert Istvan Cseh.</h1>
                 <h3 className="font-mono text-2xl pb-3">

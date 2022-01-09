@@ -1,7 +1,7 @@
 
 const ContactSection = () => {
     return (
-        <div>contacts</div>
+        <div className="h-screen" id="contact">contacts</div>
     )
 }
 
