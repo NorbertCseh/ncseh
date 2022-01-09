@@ -32,6 +32,7 @@ const AboutSection = () => {
                         <li>Tailwind</li>
                         <li>Bulma</li>
                         <li>Puppeteer</li>
+                        <li>Selenuim</li>
                     </ul>
                 </div>
             </div>
