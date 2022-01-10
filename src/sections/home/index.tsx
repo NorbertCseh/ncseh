@@ -18,17 +18,6 @@ const HomeSection = () => {
                     </a>
                 </h3>
                 <p className="font-mono text-xl italic">Slowly figuring out web development.</p>
-                <p className="font-mono text-xl italic">
-                    You can find my personal GitHub profile{" "}
-                    <a
-                        className="text-emerald-500"
-                        href="https://github.com/NorbertCseh"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        here.
-                    </a>
-                </p>
             </div>
         </div>
     )

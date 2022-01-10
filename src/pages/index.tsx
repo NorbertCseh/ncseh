@@ -11,7 +11,7 @@ import ProjectsSection from "../sections/projects";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div className="p-0 m-0 bg-indigo-900 text-indigo-200">
       <Head>
         <title>NorbertCseh</title>
         <meta
@@ -26,10 +26,9 @@ const Home: NextPage = () => {
         <HomeSection />
         <AboutSection />
         <ExperienceSection />
-        <ProjectsSection />
         <ContactSection />
       </main>
-    </>
+    </div>
   );
 };
 
