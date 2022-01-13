@@ -3,7 +3,7 @@ import { FaSun, FaMoon } from 'react-icons/fa'
 
 type setColorProps = {
     color: string,
-    setColor: void
+    setColor: Function
 }
 
 const darkModeSwitch = ({ color, setColor }: setColorProps) => {

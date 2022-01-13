@@ -5,7 +5,7 @@ import DarkModeSwitch from '../../components/darkModeSwitch'
 
 type setColorProps = {
     color: string,
-    setColor: void
+    setColor: Function
 }
 
 const Navbar = ({ color, setColor }: setColorProps) => {
