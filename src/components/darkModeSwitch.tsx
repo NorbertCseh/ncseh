@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 
 type setColorProps = {
     color: string,
-    setColor: Function
+    setColor: () => void
 }
 
 const darkModeSwitch = ({ color, setColor }: setColorProps) => {
