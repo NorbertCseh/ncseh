@@ -1,37 +1,31 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import { useState } from "react";
-import AboutSection from "../sections/about";
-import ContactSection from "../sections/contact";
-import ExperienceSection from "../sections/experience";
-import HomeSection from "../sections/home";
-import Navbar from "../sections/navigation";
 
 const Home: NextPage = () => {
-
-  const [color, setColor] = useState('dark')
-
   return (
-    <div className={color}>
-      <div className="p-0 m-0 bg-indigo-50 text-indigo-900 dark:bg-indigo-900 dark:text-indigo-200">
-        <Head>
-          <title>NorbertCseh</title>
-          <meta
-            name="description"
-            content="Norbert Istvan Cseh personal website created with Nextjs"
-          />
-          <link rel="icon" href="/me.jpg" />
-        </Head>
-
-        <Navbar color={color} setColor={setColor} />
-        <main>
-          <HomeSection />
-          <AboutSection />
-          <ExperienceSection />
-          <ContactSection />
-        </main>
+    <section
+      className="flex m-auto text-center h-screen sm:flex sm:text-left"
+      id="home"
+    >
+      <div className="m-auto">
+        <h1 className="font-mono text-5xl pb-5 font-bold">
+          Hi, I&apos;m Norbert Istvan Cseh.
+        </h1>
+        <h3 className="font-mono text-2xl pb-3">
+          Software developer engineer in Test at{" "}
+          <a
+            className="text-emerald-500"
+            href="https://www.logmein.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LogMeIn
+          </a>
+        </h3>
+        <p className="font-mono text-xl italic">
+          Slowly figuring out web development.
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
 
