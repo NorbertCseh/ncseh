@@ -10,10 +10,10 @@ type link = {
   text: string;
 };
 
-const createButtons = (rawlinks: dropDownMenuProps) => {
+const createButtons = (rawlinks: link[]) => {
   let links: ReactNode[];
 
-  links = rawlinks.links.map((e, k) => {
+  links = rawlinks.map((e, k) => {
     return (
       <div
         key={k}
@@ -29,14 +29,12 @@ const createButtons = (rawlinks: dropDownMenuProps) => {
 };
 
 const DropDownMenu = (props: dropDownMenuProps) => {
-  console.log(props);
-
   return (
     <div className="relative inline-flex justify-center items-center">
       <button className="group">
         <Link href="/projects">Projects</Link>
         <div className="invisible group-hover:visible absolute flex-col w-36 rounded-lg">
-          {createButtons(props)}
+          {createButtons(props.links)}
         </div>
       </button>
     </div>
