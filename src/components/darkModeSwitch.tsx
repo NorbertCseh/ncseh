@@ -18,16 +18,16 @@ const darkModeSwitch = ({ color, setColor }: setColorProps) => {
     console.log("sht");
   };
 
-  if (color === "light") {
+  if (color === "dark") {
     return (
       <button onClick={changeColor}>
-        <FaSun />
+        <FaSun className="text-2xl text-yellow-500" />
       </button>
     );
   } else {
     return (
       <button onClick={changeColor}>
-        <FaMoon />
+        <FaMoon className="text-2xl text-slate-600" />
       </button>
     );
   }

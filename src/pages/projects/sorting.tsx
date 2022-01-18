@@ -1,6 +1,6 @@
 import NextPage from "next";
 
-const Sorting: NextPage = () => {
+const Sorting = () => {
   return (
     <section className="w-full h-screen flex justify-center items-center">
       Sorting
