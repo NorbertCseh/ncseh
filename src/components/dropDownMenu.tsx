@@ -17,7 +17,7 @@ const createButtons = (rawlinks: link[]) => {
     return (
       <div
         key={k}
-        className="bg-indigo-900 my-3 rounded-lg border-2 border-indigo-500 first:mt-6"
+        className="bg-indigo-900 my-3 rounded-lg border-2 border-indigo-500"
       >
         <Link href={"/projects" + e.link}>
           <a>{e.text}</a>
