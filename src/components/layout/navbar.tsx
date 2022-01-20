@@ -14,10 +14,9 @@ const Navbar = ({ color, setColor }: setColorProps) => {
       <NavbarLink id="/about" text="About me" />
       <NavbarLink id="/experience" text="Experience" />
       <DropDownMenu
-        links={[
-          { link: "/sorting", text: "Sorting visualize" },
-          { link: "/hellothere", text: "Hello there" },
-        ]}
+        baseText="Projects"
+        baseLink="/projects"
+        links={[{ link: "sorting", text: "Sorting visualize" }]}
       />
       <DarkModeSwitch color={color} setColor={setColor} />
     </nav>
