@@ -3,12 +3,12 @@ import { useEffect, useState, useCallback } from "react";
 
 const Sorting = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
-  const [size, setSize] = useState(5);
+  const [size, setSize] = useState(20);
 
   const generateNumbers = useCallback(() => {
     let rndNumbers: number[] = [];
     for (let i = 0; i < size; i++) {
-      rndNumbers.push(Math.floor(Math.random() * 300));
+      rndNumbers.push(randomIntFromInterval(20, 300));
     }
     setNumbers(rndNumbers);
   }, [size]);
@@ -16,6 +16,30 @@ const Sorting = () => {
   useEffect(() => {
     generateNumbers();
   }, [generateNumbers]);
+
+  const randomIntFromInterval = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  const bubbleShort = useCallback(() => {
+    let sortedArray = [...numbers];
+    let redo = false;
+    do {
+      redo = false;
+      for (let i = 0; i < sortedArray.length - 1; i++) {
+        if (sortedArray[i] !== sortedArray[i + 1]) {
+          if (sortedArray[i] >= sortedArray[i + 1]) {
+            let temp = sortedArray[i];
+            sortedArray[i] = sortedArray[i + 1];
+            sortedArray[i + 1] = temp;
+
+            setNumbers([...sortedArray]);
+            redo = true;
+          }
+        }
+      }
+    } while (redo === true);
+  }, [numbers]);
 
   return (
     <section className="w-full h-screen p-4">
@@ -33,8 +57,8 @@ const Sorting = () => {
             <option value="20">20</option>
             <option value="25">25</option>
           </select>
-          <button>Randomize</button>
           <button onClick={generateNumbers}>Generate</button>
+          <button onClick={bubbleShort}>Sort</button>
         </div>
       </div>
       <div>
