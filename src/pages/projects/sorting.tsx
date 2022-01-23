@@ -1,8 +1,20 @@
 import NextPage from "next";
+import { withRouter } from "next/router";
 import React, { useEffect, useState, useCallback, ReactNode } from "react";
+import { randomIntFromInterval, setTimeoutByNumber } from "../../lib/helper";
+
+type barElement = {
+  num: number;
+  sty: string;
+};
 
 const Sorting = () => {
-  const [numbers, setNumbers] = useState<number[]>([]);
+  const inProgressColor = "dark:bg-yellow-400";
+  const wrongColor = "dark:bg-red-400";
+  const goodColor = "dark:bg-green-400";
+  const timeOutInterval = 300;
+
+  const [numbers, setNumbers] = useState<barElement[]>([]);
   const [size, setSize] = useState(20);
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -10,9 +22,12 @@ const Sorting = () => {
   };
 
   const generateNumbers = useCallback(() => {
-    let rndNumbers: number[] = [];
+    let rndNumbers: barElement[] = [];
     for (let i = 0; i < size; i++) {
-      rndNumbers.push(randomIntFromInterval(20, 300));
+      rndNumbers.push({
+        num: randomIntFromInterval(20, 300),
+        sty: "",
+      });
     }
     setNumbers(rndNumbers);
   }, [size]);
@@ -21,18 +36,22 @@ const Sorting = () => {
     generateNumbers();
   }, [generateNumbers]);
 
-  const randomIntFromInterval = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const bubbleShort = () => {
+  const bubbleShort = async () => {
     let sortedArray = [...numbers];
     let redo = false;
     do {
       redo = false;
       for (let i = 0; i < sortedArray.length - 1; i++) {
-        if (sortedArray[i] !== sortedArray[i + 1]) {
-          if (sortedArray[i] >= sortedArray[i + 1]) {
+        sortedArray[i].sty = inProgressColor;
+        sortedArray[i + 1].sty = inProgressColor;
+        setNumbers([...sortedArray]);
+        await setTimeoutByNumber(timeOutInterval);
+        if (sortedArray[i].num !== sortedArray[i + 1].num) {
+          if (sortedArray[i].num >= sortedArray[i + 1].num) {
+            sortedArray[i].sty = wrongColor;
+            sortedArray[i + 1].sty = wrongColor;
+            setNumbers([...sortedArray]);
+            await setTimeoutByNumber(timeOutInterval);
             let temp = sortedArray[i];
             sortedArray[i] = sortedArray[i + 1];
             sortedArray[i + 1] = temp;
@@ -40,6 +59,14 @@ const Sorting = () => {
             redo = true;
           }
         }
+        sortedArray[i].sty = goodColor;
+        sortedArray[i + 1].sty = goodColor;
+        setNumbers([...sortedArray]);
+        await setTimeoutByNumber(timeOutInterval);
+        sortedArray[i].sty = "";
+        sortedArray[i + 1].sty = "";
+        setNumbers([...sortedArray]);
+        await setTimeoutByNumber(timeOutInterval);
       }
     } while (redo === true);
   };
@@ -69,9 +96,11 @@ const Sorting = () => {
             <option value="15">15</option>
             <option value="20">20</option>
             <option value="25">25</option>
+            <option value="30">30</option>
           </select>
           <button onClick={generateNumbers}>Generate</button>
           <button onClick={bubbleShort}>Sort</button>
+          <button>Change</button>
         </div>
       </div>
       <div>
@@ -80,10 +109,14 @@ const Sorting = () => {
             return (
               <div
                 key={index}
-                className="bg-indigo-900 mx-2 mt-2 w-10 text-center text-indigo-200 dark:bg-indigo-200 dark:text-indigo-900"
-                style={{ height: `${value}px` }}
+                id={"bar-" + index}
+                className={
+                  "bg-indigo-900 mx-2 mt-2 w-10 text-center text-indigo-200 dark:bg-indigo-200 dark:text-indigo-900 " +
+                  value.sty
+                }
+                style={{ height: `${value.num}px` }}
               >
-                {value}
+                {value.num}
               </div>
             );
           })}
