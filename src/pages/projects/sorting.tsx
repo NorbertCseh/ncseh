@@ -12,6 +12,7 @@ const Sorting = () => {
   const inProgressColor = "dark:bg-yellow-400";
   const wrongColor = "dark:bg-red-400";
   const goodColor = "dark:bg-green-400";
+  const originalColor = "dark:bg-indigo-200";
   const timeOutInterval = 300;
 
   const [numbers, setNumbers] = useState<barElement[]>([]);
@@ -26,7 +27,7 @@ const Sorting = () => {
     for (let i = 0; i < size; i++) {
       rndNumbers.push({
         num: randomIntFromInterval(20, 300),
-        sty: "",
+        sty: originalColor,
       });
     }
     setNumbers(rndNumbers);
@@ -63,8 +64,8 @@ const Sorting = () => {
         sortedArray[i + 1].sty = goodColor;
         setNumbers([...sortedArray]);
         await setTimeoutByNumber(timeOutInterval);
-        sortedArray[i].sty = "";
-        sortedArray[i + 1].sty = "";
+        sortedArray[i].sty = originalColor;
+        sortedArray[i + 1].sty = originalColor;
         setNumbers([...sortedArray]);
         await setTimeoutByNumber(timeOutInterval);
       }
@@ -111,7 +112,7 @@ const Sorting = () => {
                 key={index}
                 id={"bar-" + index}
                 className={
-                  "bg-indigo-900 mx-2 mt-2 w-10 text-center text-indigo-200 dark:bg-indigo-200 dark:text-indigo-900 " +
+                  "bg-indigo-900 mx-2 mt-2 w-10 text-center text-indigo-200  dark:text-indigo-900 " +
                   value.sty
                 }
                 style={{ height: `${value.num}px` }}
