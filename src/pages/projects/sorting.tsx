@@ -77,7 +77,6 @@ const Sorting = () => {
 
           <button onClick={generateNumbers}>Generate</button>
           <button onClick={doSorting}>Sort</button>
-          <button>Change</button>
         </div>
       </div>
       <div>
@@ -98,10 +97,7 @@ const Sorting = () => {
             );
           })}
         </div>
-        <div className="border-2 w-full h-24">
-          controll panel Sorting: {sort} Size: {size}
-        </div>
-        <div className="w-full h-16 border-2 text-center flex justify-center items-center">
+        <div className="w-full h-16 text-center flex justify-center items-center">
           <span className="pl-2">Currently checking:</span>
           <div className={inProgressColor + " border-2 h-6 w-6 mt-1 ml-2"} />
 
@@ -111,7 +107,47 @@ const Sorting = () => {
           <span className="pl-2">Good place/Switched:</span>
           <div className={goodColor + " border-2 h-6 w-6 mt-1 ml-2"} />
         </div>
-        <div className="w-full h-64 border-2">sort description</div>
+        <div className="w-full h-64 flex-col p-4">
+          <div className="text-lg m-2">
+            Bubble sort is a sorting algorithm that compares two adjacent
+            elements and swaps them until they are not in the intended order.
+          </div>
+          <div className="m-2 p-2 w-full">
+            <table className="table-auto w-52">
+              <thead className="border-b-2">
+                <tr>
+                  <th>Time Complexity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Best</td>
+                  <td>O(n)</td>
+                </tr>
+                <tr>
+                  <td>Worst</td>
+                  <td>
+                    O(n<sup>2</sup>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>Avarage</td>
+                  <td>
+                    O(n<sup>2</sup>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>Space Complexity</td>
+                  <td>O(1)</td>
+                </tr>
+                <tr>
+                  <td>Stability</td>
+                  <td>Stable</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   );
