@@ -2,24 +2,39 @@ import NextPage from "next";
 import { withRouter } from "next/router";
 import React, { useEffect, useState, useCallback, ReactNode } from "react";
 import { randomIntFromInterval, setTimeoutByNumber } from "../../lib/helper";
+import { SIZES, SORTING_ALGORITHMS } from "../../constants";
+import { bubbleSorting } from "../../lib/sortings";
+import { barElement } from "../../types";
+import {
+  goodColor,
+  inProgressColor,
+  originalColor,
+  wrongColor,
+} from "../../colors";
 
-type barElement = {
-  num: number;
-  sty: string;
-};
+import SelectField from "../../components/selectField";
 
 const Sorting = () => {
-  const inProgressColor = "dark:bg-yellow-400";
-  const wrongColor = "dark:bg-red-400";
-  const goodColor = "dark:bg-green-400";
-  const originalColor = "dark:bg-indigo-200";
-  const timeOutInterval = 300;
-
   const [numbers, setNumbers] = useState<barElement[]>([]);
   const [size, setSize] = useState(20);
+  const [sort, setSort] = useState("Bubble");
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSize(parseInt(e.target.value));
+  };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSort(e.target.value);
+  };
+
+  const doSorting = () => {
+    switch (sort) {
+      case "Bubble":
+        bubbleSorting(numbers, setNumbers);
+        break;
+      default:
+        break;
+    }
   };
 
   const generateNumbers = useCallback(() => {
@@ -37,70 +52,31 @@ const Sorting = () => {
     generateNumbers();
   }, [generateNumbers]);
 
-  const bubbleShort = async () => {
-    let sortedArray = [...numbers];
-    let redo = false;
-    do {
-      redo = false;
-      for (let i = 0; i < sortedArray.length - 1; i++) {
-        sortedArray[i].sty = inProgressColor;
-        sortedArray[i + 1].sty = inProgressColor;
-        setNumbers([...sortedArray]);
-        await setTimeoutByNumber(timeOutInterval);
-        if (sortedArray[i].num !== sortedArray[i + 1].num) {
-          if (sortedArray[i].num >= sortedArray[i + 1].num) {
-            sortedArray[i].sty = wrongColor;
-            sortedArray[i + 1].sty = wrongColor;
-            setNumbers([...sortedArray]);
-            await setTimeoutByNumber(timeOutInterval);
-            let temp = sortedArray[i];
-            sortedArray[i] = sortedArray[i + 1];
-            sortedArray[i + 1] = temp;
-            setNumbers([...sortedArray]);
-            redo = true;
-          }
-        }
-        sortedArray[i].sty = goodColor;
-        sortedArray[i + 1].sty = goodColor;
-        setNumbers([...sortedArray]);
-        await setTimeoutByNumber(timeOutInterval);
-        sortedArray[i].sty = originalColor;
-        sortedArray[i + 1].sty = originalColor;
-        setNumbers([...sortedArray]);
-        await setTimeoutByNumber(timeOutInterval);
-      }
-    } while (redo === true);
-  };
-
   return (
     <section className="w-full h-screen p-4">
       <div className="flex h-20 w-full justify-between">
         <div className="text-xl flex items-center">Sorting visualizer</div>
         <div className="p-5 text-lg flex items-center justify-evenly w-1/3">
-          <select
-            className="bg-indigo-200 dark:bg-indigo-900"
-            name="sorting"
-            id="sortin"
-          >
-            <option value="bubble">Bubble</option>
-            <option value="selection">Selection</option>
-            <option value="insertion">Insertion</option>
-          </select>
-          <select
-            className="bg-indigo-200 dark:bg-indigo-900"
-            name="size"
-            id="size"
-            value={size}
+          <SelectField
+            classes="bg-indigo-200 dark:bg-indigo-900"
+            name="Sorting"
+            id="sorting"
+            value={sort}
+            onChange={handleSortChange}
+            options={SORTING_ALGORITHMS}
+          />
+
+          <SelectField
+            classes="bg-indigo-200 dark:bg-indigo-900"
+            name="ArraySize"
+            id="array_size"
+            value={size.toString()}
             onChange={handleSizeChange}
-          >
-            <option value="5">5</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="25">25</option>
-            <option value="30">30</option>
-          </select>
+            options={SIZES}
+          />
+
           <button onClick={generateNumbers}>Generate</button>
-          <button onClick={bubbleShort}>Sort</button>
+          <button onClick={doSorting}>Sort</button>
           <button>Change</button>
         </div>
       </div>
@@ -122,8 +98,19 @@ const Sorting = () => {
             );
           })}
         </div>
-        <div className="border-2 w-full h-24">controll panel</div>
-        <div className="w-full h-16 border-2">Color hints {size}</div>
+        <div className="border-2 w-full h-24">
+          controll panel Sorting: {sort} Size: {size}
+        </div>
+        <div className="w-full h-16 border-2 text-center flex justify-center items-center">
+          <span className="pl-2">Currently checking:</span>
+          <div className={inProgressColor + " border-2 h-6 w-6 mt-1 ml-2"} />
+
+          <span className="pl-2">Wrong place:</span>
+          <div className={wrongColor + " border-2 h-6 w-6 mt-1 ml-2"} />
+
+          <span className="pl-2">Good place/Switched:</span>
+          <div className={goodColor + " border-2 h-6 w-6 mt-1 ml-2"} />
+        </div>
         <div className="w-full h-64 border-2">sort description</div>
       </div>
     </section>

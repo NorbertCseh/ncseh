@@ -14,10 +14,6 @@ const darkModeSwitch = ({ color, setColor }: setColorProps) => {
     }
   };
 
-  const test = () => {
-    console.log("sht");
-  };
-
   if (color === "dark") {
     return (
       <button onClick={changeColor}>

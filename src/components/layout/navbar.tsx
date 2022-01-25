@@ -9,7 +9,7 @@ type setColorProps = {
 
 const Navbar = ({ color, setColor }: setColorProps) => {
   return (
-    <nav className="flex items-center h-16 justify-between px-20 sticky top-0 z-50  ">
+    <nav className="flex items-center h-16 justify-between px-20 sticky top-0 z-50">
       <NavbarLink id="/" text="Norbert Istvan Cseh" />
       <NavbarLink id="/about" text="About me" />
       <NavbarLink id="/experience" text="Experience" />
