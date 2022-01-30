@@ -19,7 +19,7 @@ const createButtons = (rawlinks: link[], baseLink: string) => {
     return (
       <div
         key={k}
-        className="bg-indigo-900 my-3 rounded-lg border-2 border-indigo-500"
+        className="bg-slate-800 text-slate-100 my-3 rounded-lg border-2 border-slate-500"
       >
         <Link href={baseLink + "/" + e.link}>
           <a>{e.text}</a>
@@ -32,7 +32,7 @@ const createButtons = (rawlinks: link[], baseLink: string) => {
 
 const DropDownMenu = (props: dropDownMenuProps) => {
   return (
-    <div className="relative inline-flex justify-center items-center">
+    <div className="relative inline-flex justify-center items-center text-lg">
       <button className="group">
         <Link href={props.baseLink}>{props.baseText}</Link>
         <div className="invisible group-hover:visible absolute flex-col w-36 rounded-lg">

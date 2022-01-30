@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const AboutSection: NextPage = () => {
   return (
-    <section className="w-full h-screen flex m-auto" id="about">
+    <section className="h-screen flex m-auto" id="about">
       <div className="flex h-auto m-auto">
         <div className="text-center h-auto m-auto ml-16">
           <Image
@@ -18,8 +18,7 @@ const AboutSection: NextPage = () => {
             <span className="text-lg">
               {" "}
               Hi! I&apos;m Norbert and I love crafting things for the web.
-              <br />I discovered my passion for Web Development during
-              highscool.{" "}
+              <br />I discovered my passion for Development during highscool.{" "}
             </span>{" "}
             <br />
             <span className="text-lg">

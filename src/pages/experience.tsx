@@ -3,7 +3,7 @@ import { NextPage } from "next";
 
 const ExperienceSection: NextPage = () => {
   return (
-    <section className="flex m-auto h-screen" id="experience">
+    <section className="flex m-auto h-screen mr-20" id="experience">
       <div className="flex-col m-auto w-full">
         <Experience
           date="2020 Jan - Today"

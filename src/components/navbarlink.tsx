@@ -8,7 +8,9 @@ type NavbarLinkProps = {
 const NavbarLink = (props: NavbarLinkProps) => {
   return (
     <Link href={props.id}>
-      <a className="text-xl hover:text-violet-300">{props.text}</a>
+      <a className="text-xl hover:text-slate-600 hover:dark:text-slate-300">
+        {props.text}
+      </a>
     </Link>
   );
 };

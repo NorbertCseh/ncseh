@@ -7,7 +7,7 @@ type contactProps = {
 
 const Contact = (props: contactProps) => {
   return (
-    <div className="flex">
+    <div className="flex hover:text-slate-700 dark:hover:text-slate-300">
       <a href={props.link} target="_blank" rel="noreferrer">
         {props.icon}
       </a>

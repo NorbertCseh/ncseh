@@ -15,11 +15,11 @@ const Layout = ({ children }: interfaceProps) => {
   return (
     <>
       <main className={color}>
-        <div className="flex dark:bg-indigo-900 dark:text-indigo-100 bg-indigo-100 text-indigo-900">
-          <ContactSection />
-          <div className="flex-col w-screen">
-            <Navbar color={color} setColor={changeColor} />
-            <section className="dark:bg-indigo-900 dark:text-indigo-100 bg-indigo-100 text-indigo-900">
+        <div className="flex-col dark:bg-slate-800 dark:text-slate-100 bg-slate-100 text-slate-900">
+          <Navbar color={color} setColor={changeColor} />
+          <div className="flex">
+            <ContactSection />
+            <section className="dark:bg-slate-800 dark:text-slate-100 bg-slate-100 text-slate-900 m-auto">
               {children}
             </section>
           </div>

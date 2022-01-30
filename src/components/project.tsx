@@ -8,7 +8,7 @@ type projectProps = {
 
 const Project = (props: projectProps) => {
   return (
-    <div className="flex-col w-1/5 h-1/5 border-2 border-indigo-500 rounded-lg p-4">
+    <div className="flex-col h-1/5 border-2 border-slate-500 rounded-lg p-4">
       <div className="mb-4">
         <Link href={"/projects/" + props.link}>
           <a className="text-lg">{props.title}</a>

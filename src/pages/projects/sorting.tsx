@@ -58,7 +58,7 @@ const Sorting = () => {
         <div className="text-xl flex items-center">Sorting visualizer</div>
         <div className="p-5 text-lg flex items-center justify-evenly w-1/3">
           {/* <SelectField
-            classes="bg-indigo-200 dark:bg-indigo-900"
+            classes="bg-slate-200 dark:bg-slate-900"
             name="Sorting"
             id="sorting"
             value={sort}
@@ -67,7 +67,7 @@ const Sorting = () => {
           /> */}
 
           <SelectField
-            classes="bg-indigo-200 dark:bg-indigo-900"
+            classes="bg-slate-200 dark:bg-slate-900"
             name="ArraySize"
             id="array_size"
             value={size.toString()}
@@ -87,7 +87,7 @@ const Sorting = () => {
                 key={index}
                 id={"bar-" + index}
                 className={
-                  "bg-indigo-900 mx-2 mt-2 w-10 text-center text-indigo-200  dark:text-indigo-900 " +
+                  "mx-2 mt-2 w-10 text-center text-slate-200  dark:text-slate-900 " +
                   value.sty
                 }
                 style={{ height: `${value.num}px` }}
