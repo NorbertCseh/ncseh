@@ -80,7 +80,7 @@ const Sorting = () => {
         </div>
       </div>
       <div>
-        <div className="flex w-full border-2 h-80 justify-center">
+        <div className="flex w-full h-80 justify-center">
           {numbers.map((value, index) => {
             return (
               <div
