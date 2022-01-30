@@ -57,14 +57,14 @@ const Sorting = () => {
       <div className="flex h-20 w-full justify-between">
         <div className="text-xl flex items-center">Sorting visualizer</div>
         <div className="p-5 text-lg flex items-center justify-evenly w-1/3">
-          <SelectField
+          {/* <SelectField
             classes="bg-indigo-200 dark:bg-indigo-900"
             name="Sorting"
             id="sorting"
             value={sort}
             onChange={handleSortChange}
             options={SORTING_ALGORITHMS}
-          />
+          /> */}
 
           <SelectField
             classes="bg-indigo-200 dark:bg-indigo-900"
