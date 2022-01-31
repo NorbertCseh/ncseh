@@ -19,6 +19,7 @@ const Sorting = () => {
   const [numbers, setNumbers] = useState<barElement[]>([]);
   const [size, setSize] = useState(20);
   const [sort, setSort] = useState("Bubble");
+  const [isSorting, setIsSorting] = useState(false);
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSize(parseInt(e.target.value));
@@ -31,7 +32,7 @@ const Sorting = () => {
   const doSorting = () => {
     switch (sort) {
       case "Bubble":
-        bubbleSorting(numbers, setNumbers);
+        bubbleSorting(numbers, setNumbers, setIsSorting);
         break;
       default:
         break;
@@ -81,7 +82,13 @@ const Sorting = () => {
             />
 
             <button onClick={generateNumbers}>Generate</button>
-            <button onClick={doSorting}>Sort</button>
+            <button
+              onClick={doSorting}
+              disabled={isSorting}
+              className="disabled:text-red-800"
+            >
+              Sort
+            </button>
           </div>
         </div>
         <div>

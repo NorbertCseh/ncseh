@@ -10,8 +10,10 @@ import { setTimeoutByNumber } from "./helper";
 
 export const bubbleSorting = async (
   numbers: Array<barElement>,
-  setNumbers: Function
+  setNumbers: Function,
+  setIsSorting: Function
 ) => {
+  setIsSorting(true);
   let sortedArray = [...numbers];
   let redo = false;
   do {
@@ -44,4 +46,5 @@ export const bubbleSorting = async (
       await setTimeoutByNumber(timeOutInterval);
     }
   } while (redo === true);
+  setIsSorting(false);
 };
