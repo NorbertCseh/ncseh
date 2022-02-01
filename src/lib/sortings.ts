@@ -7,6 +7,7 @@ import {
 } from "../colors";
 import { timeOutInterval } from "../constants";
 import { setTimeoutByNumber } from "./helper";
+import { time } from "console";
 
 export const bubbleSorting = async (
   numbers: Array<barElement>,
@@ -46,5 +47,45 @@ export const bubbleSorting = async (
       await setTimeoutByNumber(timeOutInterval);
     }
   } while (redo === true);
+  setIsSorting(false);
+};
+
+export const selectionSort = async (
+  numbers: Array<barElement>,
+  setNumbers: Function,
+  setIsSorting: Function
+) => {
+  setIsSorting(true);
+  const maxRun = numbers.length;
+  let runs = 0;
+  let tempArray = [...numbers];
+  let temp = 0;
+
+  for (let i = 0; i < maxRun; i++) {
+    let minNumber = 900;
+    for (let k = runs; k < maxRun; k++) {
+      if (minNumber > tempArray[k].num) {
+        if (temp !== runs - 1) {
+          tempArray[temp].sty = originalColor;
+          setNumbers([...tempArray]);
+        }
+        minNumber = tempArray[k].num;
+        temp = k;
+        tempArray[k].sty = inProgressColor;
+        setNumbers([...tempArray]);
+        await setTimeoutByNumber(timeOutInterval);
+      }
+    }
+    if (temp === runs) {
+      tempArray[runs].sty = goodColor;
+      setNumbers([...tempArray]);
+    } else {
+      tempArray.splice(temp, 1);
+      tempArray.splice(runs, 0, { num: minNumber, sty: goodColor });
+      setNumbers([...tempArray]);
+      await setTimeoutByNumber(timeOutInterval);
+    }
+    runs++;
+  }
   setIsSorting(false);
 };

@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback, ReactNode } from "react";
 import Head from "next/head";
 import { randomIntFromInterval, setTimeoutByNumber } from "../../lib/helper";
 import { SIZES, SORTING_ALGORITHMS } from "../../constants";
-import { bubbleSorting } from "../../lib/sortings";
+import { bubbleSorting, selectionSort } from "../../lib/sortings";
 import { barElement } from "../../types";
 import {
   goodColor,
@@ -33,6 +33,9 @@ const Sorting = () => {
     switch (sort) {
       case "Bubble":
         bubbleSorting(numbers, setNumbers, setIsSorting);
+        break;
+      case "Selection":
+        selectionSort(numbers, setNumbers, setIsSorting);
         break;
       default:
         break;
@@ -63,14 +66,14 @@ const Sorting = () => {
         <div className="flex h-20 w-full justify-between">
           <div className="text-xl flex items-center">Sorting visualizer</div>
           <div className="p-5 text-lg flex items-center justify-evenly w-1/3">
-            {/* <SelectField
-            classes="bg-slate-200 dark:bg-slate-900"
-            name="Sorting"
-            id="sorting"
-            value={sort}
-            onChange={handleSortChange}
-            options={SORTING_ALGORITHMS}
-          /> */}
+            <SelectField
+              classes="bg-slate-200 dark:bg-slate-900"
+              name="Sorting"
+              id="sorting"
+              value={sort}
+              onChange={handleSortChange}
+              options={SORTING_ALGORITHMS}
+            />
 
             <SelectField
               classes="bg-slate-200 dark:bg-slate-900"
@@ -81,7 +84,14 @@ const Sorting = () => {
               options={SIZES}
             />
 
-            <button onClick={generateNumbers}>Generate</button>
+            <button
+              onClick={generateNumbers}
+              disabled={isSorting}
+              className="disabled:text-red-800"
+            >
+              Generate
+            </button>
+
             <button
               onClick={doSorting}
               disabled={isSorting}
