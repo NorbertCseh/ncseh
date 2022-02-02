@@ -50,20 +50,20 @@ export const bubbleSorting = async (
   setIsSorting(false);
 };
 
+// TODO: Refactor pls
 export const selectionSort = async (
   numbers: Array<barElement>,
   setNumbers: Function,
   setIsSorting: Function
 ) => {
   setIsSorting(true);
-  const maxRun = numbers.length;
   let runs = 0;
   let tempArray = [...numbers];
   let temp = 0;
 
-  for (let i = 0; i < maxRun; i++) {
+  for (let i = 0; i < numbers.length; i++) {
     let minNumber = 900;
-    for (let k = runs; k < maxRun; k++) {
+    for (let k = runs; k < numbers.length; k++) {
       if (minNumber > tempArray[k].num) {
         if (temp !== runs - 1) {
           tempArray[temp].sty = originalColor;

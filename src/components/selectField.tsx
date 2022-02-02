@@ -8,6 +8,7 @@ type selectOptionsProps = {
   value: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
   options: Array<any>;
+  isDisabled: boolean;
 };
 
 const SelectField = (props: selectOptionsProps) => {
@@ -18,6 +19,7 @@ const SelectField = (props: selectOptionsProps) => {
       value={props.value}
       onChange={props.onChange}
       className={props.classes}
+      disabled={props.isDisabled}
     >
       {props.options.map((value, key) => {
         return (
