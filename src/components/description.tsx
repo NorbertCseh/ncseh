@@ -1,3 +1,5 @@
+import ColorHelpers from "./colorHelpers";
+
 import {
   goodColor,
   inProgressColor,
@@ -6,9 +8,28 @@ import {
 } from "../colors";
 import { BUBBLE_SORTING_DESC, SELECTION_SORTING_DESC } from "../constants";
 
-interface descriptionProps {
+type descriptionProps = {
   sorting: string;
-}
+};
+
+const HelperColors = (props: descriptionProps) => {
+  if (props.sorting === "Bubble") {
+    return (
+      <>
+        <ColorHelpers text="Currently checking:" color={inProgressColor} />
+        <ColorHelpers text="Correct place:" color={goodColor} />
+        <ColorHelpers text="Wrong place:" color={wrongColor} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <ColorHelpers text="Currently checking:" color={inProgressColor} />
+        <ColorHelpers text="Correct place:" color={goodColor} />
+      </>
+    );
+  }
+};
 
 const Description = (props: descriptionProps) => {
   let description = BUBBLE_SORTING_DESC;
@@ -20,14 +41,7 @@ const Description = (props: descriptionProps) => {
   return (
     <>
       <div className="w-full h-16 text-center flex justify-center items-center">
-        <span className="pl-2">Currently checking:</span>
-        <div className={inProgressColor + " border-2 h-6 w-6 mt-1 ml-2"} />
-
-        <span className="pl-2">Wrong place:</span>
-        <div className={wrongColor + " border-2 h-6 w-6 mt-1 ml-2"} />
-
-        <span className="pl-2">Good place/Switched:</span>
-        <div className={goodColor + " border-2 h-6 w-6 mt-1 ml-2"} />
+        <HelperColors sorting={props.sorting} />
       </div>
       <div className="w-full h-64 flex-col p-4">
         <div className="text-lg m-2">{description.description}</div>
