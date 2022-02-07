@@ -6,7 +6,11 @@ import {
   originalColor,
   wrongColor,
 } from "../colors";
-import { BUBBLE_SORTING_DESC, SELECTION_SORTING_DESC } from "../constants";
+import {
+  BUBBLE_SORTING_DESC,
+  INSERTION_SORTING_DESC,
+  SELECTION_SORTING_DESC,
+} from "../constants";
 
 type descriptionProps = {
   sorting: string;
@@ -34,8 +38,18 @@ const HelperColors = (props: descriptionProps) => {
 const Description = (props: descriptionProps) => {
   let description = BUBBLE_SORTING_DESC;
 
-  if (props.sorting === "Selection") {
-    description = SELECTION_SORTING_DESC;
+  switch (props.sorting) {
+    case "Selection":
+      description = SELECTION_SORTING_DESC;
+      break;
+    case "Bubble":
+      description = BUBBLE_SORTING_DESC;
+      break;
+    case "Insertion":
+      description = INSERTION_SORTING_DESC;
+      break;
+    default:
+      break;
   }
 
   return (

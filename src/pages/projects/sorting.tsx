@@ -8,7 +8,11 @@ import {
   SORTING_ALGORITHMS,
   BUBBLE_SORTING_DESC,
 } from "../../constants";
-import { bubbleSorting, selectionSort } from "../../lib/sortings";
+import {
+  bubbleSorting,
+  insertionSorting,
+  selectionSort,
+} from "../../lib/sortings";
 import { barElement } from "../../types";
 import { originalColor } from "../../colors";
 
@@ -36,6 +40,9 @@ const Sorting = () => {
         break;
       case "Selection":
         selectionSort(numbers, setNumbers, setIsSorting);
+        break;
+      case "Insertion":
+        insertionSorting(numbers, setNumbers, setIsSorting);
         break;
       default:
         break;

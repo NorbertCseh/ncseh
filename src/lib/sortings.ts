@@ -8,6 +8,7 @@ import {
 import { timeOutInterval } from "../constants";
 import { setTimeoutByNumber } from "./helper";
 import { time } from "console";
+import { checkPrime } from "crypto";
 
 export const bubbleSorting = async (
   numbers: Array<barElement>,
@@ -86,6 +87,35 @@ export const selectionSort = async (
       await setTimeoutByNumber(timeOutInterval);
     }
     runs++;
+  }
+  setIsSorting(false);
+};
+
+export const insertionSorting = async (
+  numbers: Array<barElement>,
+  setNumbers: Function,
+  setIsSorting: Function
+) => {
+  setIsSorting(true);
+  let tempArray = [...numbers];
+  tempArray[0].sty = goodColor;
+  setNumbers([...tempArray]);
+  await setTimeoutByNumber(timeOutInterval);
+  for (let i = 1; i < tempArray.length; i++) {
+    let key = tempArray[i].num;
+    tempArray[i].sty = inProgressColor;
+    setNumbers([...tempArray]);
+    let j = i - 1;
+    await setTimeoutByNumber(timeOutInterval);
+    while (j >= 0 && tempArray[j].num > key) {
+      tempArray[j + 1].num = tempArray[j].num;
+      tempArray[i].sty = goodColor;
+      setNumbers([...tempArray]);
+      j = j - 1;
+    }
+    tempArray[j + 1] = { num: key, sty: goodColor };
+    setNumbers([...tempArray]);
+    await setTimeoutByNumber(timeOutInterval);
   }
   setIsSorting(false);
 };
