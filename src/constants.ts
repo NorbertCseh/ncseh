@@ -2,7 +2,7 @@ export const SIZES = [5, 10, 15, 20, 25, 30];
 
 export const SORTING_ALGORITHMS = ["Bubble", "Selection", "Insertion"];
 
-export const timeOutInterval = 100;
+export const timeOutIntervals = [50,100,250, 500, 1000,2000];
 
 export const BUBBLE_SORTING_DESC = {
   description:

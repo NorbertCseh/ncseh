@@ -1,12 +1,10 @@
-import NextPage from "next";
-import { withRouter } from "next/router";
-import React, { useEffect, useState, useCallback, ReactNode } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Head from "next/head";
-import { randomIntFromInterval, setTimeoutByNumber } from "../../lib/helper";
+import { randomIntFromInterval } from "../../lib/helper";
 import {
   SIZES,
   SORTING_ALGORITHMS,
-  BUBBLE_SORTING_DESC,
+  timeOutIntervals,
 } from "../../constants";
 import {
   bubbleSorting,
@@ -24,6 +22,7 @@ const Sorting = () => {
   const [size, setSize] = useState(20);
   const [sort, setSort] = useState("Bubble");
   const [isSorting, setIsSorting] = useState(false);
+  const [timeout, setTimeout] = useState(100)
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSize(parseInt(e.target.value));
@@ -33,16 +32,20 @@ const Sorting = () => {
     setSort(e.target.value);
   };
 
+  const handleTimeoutChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTimeout(parseInt( e.target.value));
+  };
+
   const doSorting = () => {
     switch (sort) {
       case "Bubble":
-        bubbleSorting(numbers, setNumbers, setIsSorting);
+        bubbleSorting(numbers, setNumbers, setIsSorting, timeout);
         break;
       case "Selection":
-        selectionSort(numbers, setNumbers, setIsSorting);
+        selectionSort(numbers, setNumbers, setIsSorting, timeout);
         break;
       case "Insertion":
-        insertionSorting(numbers, setNumbers, setIsSorting);
+        insertionSorting(numbers, setNumbers, setIsSorting, timeout);
         break;
       default:
         break;
@@ -67,14 +70,23 @@ const Sorting = () => {
   return (
     <>
       <Head>
-        <title>Sorting</title>
+        <title>Sorting visualizer</title>
       </Head>
       <section className="w-full h-screen p-4">
-        <div className="flex h-20 w-full justify-between">
-          <div className="text-xl flex items-center">Sorting visualizer</div>
-          <div className="p-5 text-lg flex items-center justify-evenly w-1/3">
+        <div className="flex justify-between w-full h-20">
+          <div className="flex items-center text-xl">Sorting visualizer</div>
+          <div className="flex items-center w-1/3 p-5 text-lg justify-evenly">
             <SelectField
-              classes="bg-slate-200 dark:bg-slate-900 disabled:text-slate-700"
+              label="Timeout:"
+              name="Timeout"
+              id="timeout"
+              value={timeout.toString()}
+              onChange={handleTimeoutChange}
+              options={timeOutIntervals}
+              isDisabled={isSorting}
+            />
+            <SelectField
+              label="Sorting:"
               name="Sorting"
               id="sorting"
               value={sort}
@@ -84,7 +96,7 @@ const Sorting = () => {
             />
 
             <SelectField
-              classes="bg-slate-200 dark:bg-slate-900 disabled:text-slate-700"
+              label="Size:"
               name="ArraySize"
               id="array_size"
               value={size.toString()}
@@ -96,7 +108,7 @@ const Sorting = () => {
             <button
               onClick={generateNumbers}
               disabled={isSorting}
-              className="disabled:text-slate-500 dark:disabled:text-slate-700"
+              className="px-2 disabled:text-slate-500 dark:disabled:text-slate-700"
             >
               Generate
             </button>
@@ -104,14 +116,14 @@ const Sorting = () => {
             <button
               onClick={doSorting}
               disabled={isSorting}
-              className="disabled:text-slate-500 dark:disabled:text-slate-700"
+              className="px-2 disabled:text-slate-500 dark:disabled:text-slate-700"
             >
               Sort
             </button>
           </div>
         </div>
         <div>
-          <div className="flex w-full h-80 justify-center">
+          <div className="flex justify-center w-full h-80">
             {numbers.map((value, index) => {
               return (
                 <div

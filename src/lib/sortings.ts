@@ -5,15 +5,13 @@ import {
   inProgressColor,
   originalColor,
 } from "../colors";
-import { timeOutInterval } from "../constants";
 import { setTimeoutByNumber } from "./helper";
-import { time } from "console";
-import { checkPrime } from "crypto";
 
 export const bubbleSorting = async (
   numbers: Array<barElement>,
   setNumbers: Function,
-  setIsSorting: Function
+  setIsSorting: Function,
+  timeOutInterval: number
 ) => {
   setIsSorting(true);
   let sortedArray = [...numbers];
@@ -51,11 +49,11 @@ export const bubbleSorting = async (
   setIsSorting(false);
 };
 
-// TODO: Refactor pls
 export const selectionSort = async (
   numbers: Array<barElement>,
   setNumbers: Function,
-  setIsSorting: Function
+  setIsSorting: Function,
+  timeOutInterval: number
 ) => {
   setIsSorting(true);
   let runs = 0;
@@ -94,7 +92,8 @@ export const selectionSort = async (
 export const insertionSorting = async (
   numbers: Array<barElement>,
   setNumbers: Function,
-  setIsSorting: Function
+  setIsSorting: Function,
+  timeOutInterval: number
 ) => {
   setIsSorting(true);
   let tempArray = [...numbers];

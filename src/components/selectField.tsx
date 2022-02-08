@@ -1,8 +1,5 @@
-import { listenerCount } from "process";
-import { urlToHttpOptions } from "url";
-
 type selectOptionsProps = {
-  classes: string;
+  label:string;
   name: string;
   id: string;
   value: string;
@@ -13,12 +10,14 @@ type selectOptionsProps = {
 
 const SelectField = (props: selectOptionsProps) => {
   return (
+  <>
+  <label>{props.label}</label>
     <select
       name={props.name}
       id={props.id}
       value={props.value}
       onChange={props.onChange}
-      className={props.classes}
+      className="m-2 bg-slate-200 dark:bg-slate-900 disabled:text-slate-700"
       disabled={props.isDisabled}
     >
       {props.options.map((value, key) => {
@@ -29,6 +28,7 @@ const SelectField = (props: selectOptionsProps) => {
         );
       })}
     </select>
+    </>
   );
 };
 
